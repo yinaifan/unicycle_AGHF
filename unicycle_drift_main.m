@@ -23,6 +23,8 @@ intgrids = 10000;
 % initial and final value for states
 X0 = [0;0;0;0;0];
 Xf = [0;-1;0;0;0];
+N = length(X0);
+M =2;
 % motion duration
 T = 1;
 % penalty value (the lambda in paper)
@@ -30,7 +32,7 @@ k = 50000;
 
 % solve for trajectory, see "unicycle_drift_AGHF" function file for
 % implementation details
-[p, dp, xfull, xdrift, bufull, budrift, sol, s, t, tint, cost] = unicycle_drift_AGHF(smax, tgrids, intgrids, sgrids, k, X0, Xf, T);
+[p, dp, xfull, xdrift, bufull, budrift, sol, s, t, tint, cost] = unicycle_drift_AGHF(smax, tgrids, intgrids, sgrids, k, X0, Xf, T, N, M);
 
 %% plotting
 
@@ -106,7 +108,7 @@ hold on;
 
 plot(interp1(tint,xdrift(1,:),t),interp1(tint,xdrift(2,:),t),':c','LineWidth',2);
 
-legend('AGHF solution', 'integrated path')
+legend('AGHF solution', 'integrated path','AutoUpdate','off')
 %plot actual trajectory
 Xs=interp1(tint,xdrift(1,:),t);
 Ys=interp1(tint,xdrift(2,:),t);
