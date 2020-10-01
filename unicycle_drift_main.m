@@ -23,7 +23,9 @@ intgrids = 10000;
 % initial and final value for states
 X0 = [0;0;0;0;0];
 Xf = [0;-1;0;0;0];
+% # of states
 N = length(X0);
+% # of inputs
 M =2;
 % motion duration
 T = 1;
